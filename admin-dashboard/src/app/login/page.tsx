@@ -18,15 +18,24 @@ export default function LoginPage() {
     e.preventDefault()
     setLoading(true)
 
-    // Simulate API call
-    setTimeout(() => {
-      // Mock authentication
-      if (email && password) {
-        localStorage.setItem("admin_token", "mock_token")
+    try {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password })
+      })
+      const data = await res.json()
+      if (data.success && data.token) {
+        localStorage.setItem("admin_token", data.token)
         router.push("/")
+      } else {
+        alert(data.error || "Invalid password.")
       }
+    } catch (err: any) {
+      alert("Network error: " + (err.message || "Authentication failed."))
+    } finally {
       setLoading(false)
-    }, 1000)
+    }
   }
 
   return (
