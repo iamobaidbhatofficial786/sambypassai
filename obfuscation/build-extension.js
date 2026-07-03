@@ -20,7 +20,9 @@ const excludeList = [
   'node_modules',
   'implementation_plan.md',
   'task.md',
-  'walkthrough.md'
+  'walkthrough.md',
+  'pkcs8_private.pem',
+  'public.pem'
 ];
 
 // Third party libraries or bridge files that shouldn't be obfuscated
