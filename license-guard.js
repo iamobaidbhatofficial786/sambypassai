@@ -361,6 +361,7 @@
     if (_policyPollTimer) { clearInterval(_policyPollTimer); _policyPollTimer = null; }
   }
 
+  window.pkEnsureActiveLicense = pkEnsureActiveLicense;
   window.pkStartLicensePolicyPoll = pkStartLicensePolicyPoll;
   window.pkStopLicensePolicyPoll = pkStopLicensePolicyPoll;
   window.pkPollLicensePolicyOnce = pkPollLicensePolicyOnce;
