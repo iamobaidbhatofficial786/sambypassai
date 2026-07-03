@@ -15,7 +15,7 @@ function extensionFooterBadge() {
   return name + " • v" + extensionVersionShort();
 }
 
-var POWERKITS_API_BASE = "https://sambypassai-api.vercel.app";
+var POWERKITS_API_BASE = "https://sambypassai.vercel.app";
 var POWERKITS_API_KEY = "pk_lov_ext_7c8d9e2a4b1c3d0e2f5a6b7c8d9e0f1a";
 
 /** @deprecated Use POWERKITS_* — kept for older script references */
