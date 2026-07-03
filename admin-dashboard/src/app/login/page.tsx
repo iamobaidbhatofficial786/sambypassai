@@ -22,14 +22,14 @@ export default function LoginPage() {
       const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password })
+        body: JSON.stringify({ email, password })
       })
       const data = await res.json()
       if (data.success && data.token) {
         localStorage.setItem("admin_token", data.token)
         router.push("/")
       } else {
-        alert(data.error || "Invalid password.")
+        alert(data.error || "Invalid email or password.")
       }
     } catch (err: any) {
       alert("Network error: " + (err.message || "Authentication failed."))
