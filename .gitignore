@@ -1,0 +1,66 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Next.js
+admin-dashboard/.next/
+admin-dashboard/out/
+admin-dashboard/build/
+admin-dashboard/dist/
+
+# Vercel
+.vercel
+admin-dashboard/.vercel/
+vercel-api/.vercel/
+
+# Production
+dist/
+build/
+
+# Misc
+.DS_Store
+*.pem
+*.log
+*.swp
+*.swo
+*~
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local env files
+.env*
+
+# IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# OS
+Thumbs.db
+
+# Don't ignore example env files
+!.env.example
+
+# Extension build artifacts
+obfuscation/node_modules/
+obfuscation/dist/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Keys (security)
+private.pem
+pkcs8_private.pem
+public.pem
+
+# Documentation test files (can be removed if you want)
+DESIGN_VERIFICATION.html

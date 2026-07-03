@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET, POST, OPTIONS" },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "content-type, authorization, apikey, x-device-id, x-nonce, x-signature, x-timestamp, x-license-key, x-session-id, x-admin-secret"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    { "source": "/functions/v1/validate-license", "destination": "/api/license?action=activate" },
+    { "source": "/functions/v1/assert-session", "destination": "/api/license?action=verify" },
+    { "source": "/functions/v1/proxy-command", "destination": "/api/premium?action=proxy-command" },
+    { "source": "/functions/v1/optimize-prompt", "destination": "/api/premium?action=optimize-prompt" },
+    { "source": "/functions/v1/create-lovable-project", "destination": "/api/premium?action=create-lovable-project" },
+    { "source": "/functions/v1/remove-watermark", "destination": "/api/premium?action=remove-watermark" },
+    { "source": "/functions/v1/publish-project", "destination": "/api/premium?action=publish-project" },
+    { "source": "/functions/v1/enable-cloud", "destination": "/api/premium?action=enable-cloud" },
+    { "source": "/storage/v1/object/prompt-images/:path*", "destination": "/api/storage?action=upload&path=:path*" },
+    { "source": "/storage/v1/object/public/prompt-images/:path*", "destination": "/api/storage?action=public&path=:path*" },
+    { "source": "/rest/v1/notifications", "destination": "/api/rest?resource=notifications" },
+    { "source": "/rest/v1/packages", "destination": "/api/rest?resource=packages" },
+    { "source": "/rest/v1/extension_versions", "destination": "/api/rest?resource=versions" },
+    { "source": "/rest/v1/user_roles", "destination": "/api/rest?resource=user_roles" },
+    { "source": "/rest/v1/licenses", "destination": "/api/rest?resource=licenses" },
+    { "source": "/api/admin/:resource", "destination": "/api/admin?resource=:resource" },
+    { "source": "/api/license/:action", "destination": "/api/license?action=:action" }
+  ]
+}
