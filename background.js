@@ -269,6 +269,7 @@ function isAllowedProxyUrl(urlStr) {
     var url = new URL(urlStr);
     var hostname = String(url.hostname || "").toLowerCase();
     var allowedDomains = [
+      "vercel.app",
       "vercel-api-lac-kappa.vercel.app",
       "lovable-powerkits-644-license-server.vercel.app",
       "lov.powerkits.net",
