@@ -345,7 +345,26 @@
     return new Promise(function(resolve, reject) {
       chrome.storage.local.get(["ql_license_valid", "ql_session_id"], function(res) {
         if (res && res.ql_license_valid && res.ql_session_id) {
-          resolve(true);
+          // Verify session token is a valid client-side JWT format and not expired
+          var verifyFn = typeof verifyJwtClientSide === "function" ? verifyJwtClientSide : (typeof window !== "undefined" && window.verifyJwtClientSide);
+          if (verifyFn) {
+            verifyFn(res.ql_session_id).then(function(isValid) {
+              if (isValid) {
+                resolve(true);
+              } else {
+                reject(new Error("Unauthorized: Session token is invalid or expired. Please re-activate your license."));
+              }
+            }).catch(function() {
+              reject(new Error("Security validation error."));
+            });
+          } else {
+            // Fallback checking format if security module hasn't initialized
+            if (String(res.ql_session_id).startsWith("eyJ") && String(res.ql_session_id).split('.').length === 3) {
+              resolve(true);
+            } else {
+              reject(new Error("Invalid session token format."));
+            }
+          }
         } else {
           reject(new Error("Activate your license key in the ByPass Ai side panel first."));
         }

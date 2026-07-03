@@ -38,8 +38,7 @@ var SEND_STRATEGY = "native";
 
 var POWERKITS_DEBUG = false;
 
-/** Managed licenses required — no auto-activation bypass. */
-var INTERNAL_LICENSE_MODE = false;
+
 
 /** Side panel only — no floating bubble on lovable.dev. */
 var SIDE_PANEL_ONLY = true;
