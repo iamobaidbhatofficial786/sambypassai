@@ -211,7 +211,6 @@
           throw err;
         });
       });
-    });
   }
 
   async function computeHmacSha256(secret, message) {
@@ -335,8 +334,9 @@
               throw new Error(msg);
             });
           }
-          return data;
-        }).catch(function () { /* network blip — keep session */ });
+            return data;
+          }).catch(function () { /* network blip — keep session */ });
+        });
       });
     });
   }
