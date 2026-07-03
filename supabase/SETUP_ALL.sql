@@ -73,6 +73,9 @@ ALTER TABLE licenses ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP WITH TIME ZON
 ALTER TABLE licenses ADD COLUMN IF NOT EXISTS admin_message TEXT DEFAULT '';
 ALTER TABLE licenses ADD COLUMN IF NOT EXISTS support_url TEXT DEFAULT '';
 ALTER TABLE licenses ADD COLUMN IF NOT EXISTS support_telegram TEXT DEFAULT '';
+ALTER TABLE licenses ADD COLUMN IF NOT EXISTS plan VARCHAR(100);
+ALTER TABLE licenses ADD COLUMN IF NOT EXISTS customer_name VARCHAR(255);
+ALTER TABLE licenses ADD COLUMN IF NOT EXISTS customer_email VARCHAR(255);
 
 UPDATE licenses SET plan = plan_name WHERE plan IS NULL AND plan_name IS NOT NULL;
 UPDATE licenses SET updated_at = created_at WHERE updated_at IS NULL;
