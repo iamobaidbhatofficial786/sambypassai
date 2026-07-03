@@ -65,21 +65,21 @@ async function build() {
         
         const obfuscationResult = JavaScriptObfuscator.obfuscate(code, {
           compact: true,
-          controlFlowFlattening: true,
-          controlFlowFlatteningThreshold: 0.75,
-          deadCodeInjection: true,
-          deadCodeInjectionThreshold: 0.4,
-          debugProtection: false, // Set false to avoid compatibility issues in background
+          controlFlowFlattening: false, // Safer for extension environments
+          controlFlowFlatteningThreshold: 0,
+          deadCodeInjection: false, // Safer for extension environments
+          deadCodeInjectionThreshold: 0,
+          debugProtection: false,
           debugProtectionInterval: 0,
           disableConsoleOutput: false,
           identifierNamesGenerator: 'hexadecimal',
           log: false,
           renameGlobals: false, // Must be false to keep chrome API bindings working
           rotateStringArray: true,
-          selfDefending: true,
+          selfDefending: false, // Disabled to prevent sandboxed crash
           stringArray: true,
           stringArrayEncoding: ['base64'],
-          stringArrayThreshold: 0.75,
+          stringArrayThreshold: 0.8,
           unicodeEscapeSequence: false
         });
         
